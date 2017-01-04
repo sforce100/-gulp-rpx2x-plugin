@@ -1,5 +1,7 @@
 # gulp-rpx2x-plugin #
 
+### 借鉴的是nilhave的gulp-px2rem-plugin
+
 将 rpx 转化成 rem或者其他单位 的 gulp 插件。
 
 ### 使用方法 ###
@@ -9,13 +11,10 @@
     gulp.task('default', function() {
       gulp.src('*.css')
       .pipe(rpx2x())
-    //  .pipe(rpx2x({'width_design':750,'valid_num':6,'pieces':10,'ignore_px':[1,2],'ignore_selector':['.class1']}));
+    //  .pipe(rpx2x({'unit_type':px, 'ignore_px':[1,2],'ignore_selector':['.class1']}));
     });
 
 ### 参数说明 ###
-- width_design：设计稿宽度。默认值640
-- valid_num：生成rem后的小数位数。默认值4
-- pieces：将整屏切份。默认为10，相当于10rem = width_design(设计稿宽度)
 - ignore_px：让部分px不在转换成rem。默认为空数组
 - ignore_selector：让部分选择器不在转换为rem。默认为空数组
 - unit_type: 转化单位类型自定义

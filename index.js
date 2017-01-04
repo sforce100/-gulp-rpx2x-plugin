@@ -17,6 +17,7 @@ module.exports = function(opt) {
     unit_type=opt.unit_type||unit_type;
     base_value=opt.base_value||base_value;
   }
+  console.log("loading rpx2x");
   function rpx2x(file, encoding, callback) {
     if (file.isNull())  return callback(null, file);
     if (file.isStream()) return callback(createError(file, 'Streaming not supported'));
@@ -26,26 +27,25 @@ module.exports = function(opt) {
     var reg=/([^\{]*)\{([^\}]*)\}/g;
     var array_style=s_file.match(reg);
     var new_array=[];
+    if (array_style) {
+      array_style.forEach(function(value){
+        if(ignore_selector.indexOf(value.split('{')[0].replace(/(^\s*)|(\s*$)/g,'')) > -1) {
+        }
+        else{
+          value=value.replace(/\s+[0]\s+|((\s*)(-?)(\d+)(rpx+))/g,function(word){
 
-    array_style.forEach(function(value){
-      if(ignore_selector.indexOf(value.split('{')[0].replace(/(^\s*)|(\s*$)/g,'')) > -1) {
-      }
-      else{
-        value=value.replace(/\s+[0]\s+|((\s*)(-?)(\d+)(rpx+))/g,function(word){
+            var origin_num = parseFloat(word);
+            ignore_px.push(0);
+            if(ignore_px.indexOf(origin_num)>-1) return word;
 
-          var origin_num = parseFloat(word);
-          ignore_px.push(0);
-          if(ignore_px.indexOf(origin_num)>-1) return word;
+            var base_num=origin_num*base_value;
 
-          var base_num=origin_num*base_value;
-
-          return ' ' + new Number(base_num).toFixed(valid_num) + unit_type;
-        });
-      }
-      
-
-      new_array.push(value);
-    });
+            return ' ' + new Number(base_num).toFixed(valid_num) + unit_type;
+          });
+        }
+        new_array.push(value);
+      });
+    }
 
     file.contents=new Buffer(new_array.join(''));
     this.push(file);

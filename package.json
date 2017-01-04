@@ -1,6 +1,6 @@
 {
   "name": "gulp-rpx2x-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "sforce100",
   "description": "rpx to rem or px",
   "keywords": [
