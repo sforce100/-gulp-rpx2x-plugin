@@ -3,8 +3,27 @@
   "version": "0.1.0",
   "author": "sforce100",
   "description": "rpx to rem or px",
-  "keywords": "javascript, nodejs, gulp, rpx2x ",
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "gulp",
+    "rpx2x "
+  ],
   "dependencies": {
     "through2": "^2.0.1"
-  }
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sforce100/-gulp-rpx2x-plugin.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sforce100/-gulp-rpx2x-plugin/issues"
+  },
+  "homepage": "https://github.com/sforce100/-gulp-rpx2x-plugin#readme"
 }
